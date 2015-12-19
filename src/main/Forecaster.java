@@ -16,26 +16,17 @@ public class Forecaster {
 
 	private static final double BASE_AMOUNT = 100_000;
 
-	// 128,347 ,,, 197,565
-
-	// private static final double MEAN_CONSERVATIVE = 7.4;
-	// private static final double SD_CONSERVATIVE = 8.0;
-
 	// Conservative Return
 	private static final double MEAN_CONSERVATIVE = 6.189;
 
 	// Conservative Risk
 	private static final double SD_CONSERVATIVE = 6.3438;
 
-	// 104,320 ,,, 246,553
-
 	// Aggressive Return
 	private static final double MEAN_AGGRESSIVE = 9.4324;
 
 	// Aggressive Risk
 	private static final double SD_AGGRESSIVE = 15.675;
-
-	private final List<Double> results = new ArrayList<>(NO_OF_ITERATIONS);
 
 	public static void main(String[] args) {
 
@@ -57,6 +48,8 @@ public class Forecaster {
 	public void calculateProjections(final double mean, final double sd) {
 
 		final long startTime = System.currentTimeMillis();
+
+		final List<Double> results = new ArrayList<>(NO_OF_ITERATIONS);
 
 		/*
 		 * NOTE - Using serial operations here as earlier using ExecutorService lead to higher running times probably due to more overheard
@@ -85,7 +78,6 @@ public class Forecaster {
 
 		long endTime = System.currentTimeMillis();
 		HelperUtil.print("Took {0} ms", endTime - startTime);
-		results.clear();
 	}
 
 	/**
