@@ -3,6 +3,9 @@ package test.java;
 import org.junit.Assert;
 import org.junit.Test;
 
+import main.java.ForecastHolder;
+import main.java.ForecasterUtil;
+
 public class ForecasterUtilTest {
 
 	@Test
@@ -15,7 +18,7 @@ public class ForecasterUtilTest {
 		final double mean = 7.4;
 		final double sd = 8.0;
 		for (int i = 0; i < 100; i++) {
-			ForecastHolder forecastHolder = ForecasterUtilTest.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
+			ForecastHolder forecastHolder = ForecasterUtil.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
 			double proximity_Percentile10 = (expectedPercentile10 / forecastHolder.getPercentile10()) * 100;
 			Assert.assertTrue("Percentile10 proximity should be greater than 90% in relation to expected. Found=" + proximity_Percentile10, proximity_Percentile10 >= 89);
 

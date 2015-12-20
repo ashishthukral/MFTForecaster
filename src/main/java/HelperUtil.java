@@ -1,4 +1,4 @@
-package main1.java1;
+package main.java;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -9,9 +9,10 @@ import java.util.Random;
 public class HelperUtil {
 
 	private static final Random RANDOM = new Random();
-	
+
 	/**
 	 * Generates a random SD value using the 68-95-99.7 rule. The value can be positive or negative.
+	 * 
 	 * @param oneSD
 	 * @return
 	 */
@@ -38,6 +39,7 @@ public class HelperUtil {
 
 	/**
 	 * Calculate inflation adjusted for what the passed amount would be noOfYears ago.
+	 * 
 	 * @param inflationPercentage
 	 * @param noOfYears
 	 * @param amount
@@ -52,6 +54,7 @@ public class HelperUtil {
 
 	/**
 	 * Rounds double amount using Banker's rounding method.
+	 * 
 	 * @param amount
 	 * @return double
 	 */
@@ -62,6 +65,7 @@ public class HelperUtil {
 
 	/**
 	 * Returns median from the list based on even/odd size of list.
+	 * 
 	 * @param list
 	 * @return double
 	 */
@@ -81,6 +85,7 @@ public class HelperUtil {
 
 	/**
 	 * Calculates index for a list for a particular percentile. NOTE - This is a simple implementation supporting sizes of multiple of 100s.
+	 * 
 	 * @param percentile
 	 * @param size
 	 * @return int
@@ -92,6 +97,7 @@ public class HelperUtil {
 
 	/**
 	 * Pretty prints messages using {@link MessageFormat#format(String, Object...)}. Written for brevity.
+	 * 
 	 * @param message
 	 * @param arguments
 	 */
@@ -99,7 +105,5 @@ public class HelperUtil {
 
 		System.out.println(MessageFormat.format(message, arguments));
 	}
-
-
 
 }
