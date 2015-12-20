@@ -1,7 +1,4 @@
-package main;
-
-import model.ForecastHolder;
-import util.HelperUtil;
+package main.java;
 
 public class Analyzer {
 

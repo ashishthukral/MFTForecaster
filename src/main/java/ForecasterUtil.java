@@ -1,11 +1,8 @@
-package main;
+package main.java;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import model.ForecastHolder;
-import util.HelperUtil;
 
 public class ForecasterUtil {
 
@@ -25,21 +22,25 @@ public class ForecasterUtil {
 
 	public static ForecastHolder calculateConservativeProjections(final double inflationPercentage, final int noOfYears, final double baseAmount) {
 
-		HelperUtil.print("*** Calculating Conservative Profile ***     Mean={0} , Standard Deviation={1}", MEAN_CONSERVATIVE, SD_CONSERVATIVE);
+		HelperUtil.print("*** Calculating Conservative Profile *** Mean={0} , Standard Deviation={1} , Inflation Percentage={2} , No Of Years={3} , Base Amount={4}", MEAN_CONSERVATIVE,
+				SD_CONSERVATIVE, inflationPercentage, noOfYears, baseAmount);
 		ForecastHolder forecastHolder = calculateProjections(MEAN_CONSERVATIVE, SD_CONSERVATIVE, inflationPercentage, noOfYears, baseAmount);
 		return forecastHolder;
 	}
 
 	public static ForecastHolder calculateAggressiveProjections(final double inflationPercentage, final int noOfYears, final double baseAmount) {
 
-		HelperUtil.print("\n*** Calculating Aggressive Profile ***     Mean={0} , Standard Deviation={1}", MEAN_AGGRESSIVE, SD_AGGRESSIVE);
+		HelperUtil.print("\n*** Calculating Aggressive Profile *** Mean={0} , Standard Deviation={1} , Inflation Percentage={2} , No Of Years={3} , Base Amount={4}", MEAN_AGGRESSIVE, SD_AGGRESSIVE,
+				inflationPercentage, noOfYears, baseAmount);
 		ForecastHolder forecastHolder = calculateProjections(MEAN_AGGRESSIVE, SD_AGGRESSIVE, inflationPercentage, noOfYears, baseAmount);
 		return forecastHolder;
 	}
 
 	public static ForecastHolder calculateCustomProjections(final double mean, final double sd, final double inflationPercentage, final int noOfYears, final double baseAmount) {
 
-		HelperUtil.print("\n*** Calculating Custom Profile ***     Mean={0} , Standard Deviation={1}", mean, sd);
+		// HelperUtil.print("\n*** Calculating Custom Profile *** Mean={0} , Standard Deviation={1} , Inflation Percentage={2} , No Of
+		// Years={3} , Base Amount={4}", mean, sd, inflationPercentage,
+		// noOfYears, baseAmount);
 		ForecastHolder forecastHolder = calculateProjections(mean, sd, inflationPercentage, noOfYears, baseAmount);
 		return forecastHolder;
 	}
@@ -55,8 +56,6 @@ public class ForecasterUtil {
 	 * @return ForecastHolder
 	 */
 	private static ForecastHolder calculateProjections(final double mean, final double sd, final double inflationPercentage, final int noOfYears, final double baseAmount) {
-
-		final long startTime = System.currentTimeMillis();
 
 		final List<Double> results = new ArrayList<>(NO_OF_ITERATIONS);
 
@@ -83,10 +82,8 @@ public class ForecasterUtil {
 		final double median_inflationAdjusted = HelperUtil.round(HelperUtil.adjustBackwardInflation(inflationPercentage, noOfYears, median));
 		final Double percentile90_inflationAdjusted = HelperUtil.round(HelperUtil.adjustBackwardInflation(inflationPercentage, noOfYears, percentile90));
 
-		ForecastHolder forecastHolder = new ForecastHolder(percentile10_inflationAdjusted, median_inflationAdjusted, percentile90_inflationAdjusted);
+		final ForecastHolder forecastHolder = new ForecastHolder(percentile10_inflationAdjusted, median_inflationAdjusted, percentile90_inflationAdjusted);
 
-		long endTime = System.currentTimeMillis();
-		HelperUtil.print("Took {0} ms", endTime - startTime);
 		return forecastHolder;
 	}
 
