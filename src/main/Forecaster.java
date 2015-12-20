@@ -16,11 +16,20 @@ public class Forecaster {
 
 	private static final double BASE_AMOUNT = 100_000;
 
-	// Conservative Return
-	private static final double MEAN_CONSERVATIVE = 6.189;
+	// 7.4% annual return and 8.0% 127,300 ,,, 197,502
 
-	// Conservative Risk
-	private static final double SD_CONSERVATIVE = 6.3438;
+	// 10% percentile=139,704.92
+	// Median=201,515.22
+
+	private static final double MEAN_CONSERVATIVE = 7.4;
+
+	private static final double SD_CONSERVATIVE = 8.0;
+
+	// Conservative Return
+	// private static final double MEAN_CONSERVATIVE = 6.189;
+	//
+	// // Conservative Risk
+	// private static final double SD_CONSERVATIVE = 6.3438;
 
 	// Aggressive Return
 	private static final double MEAN_AGGRESSIVE = 9.4324;
@@ -32,7 +41,8 @@ public class Forecaster {
 
 		Forecaster forecaster = new Forecaster();
 
-		HelperUtil.print("*** Calculating Conservative Profile ***     Mean={0} , Standard Deviation={1}", MEAN_CONSERVATIVE, SD_CONSERVATIVE);
+		HelperUtil.print("*** Calculating Conservative Profile ***     Mean={0} , Standard Deviation={1}", MEAN_CONSERVATIVE,
+				SD_CONSERVATIVE);
 		forecaster.calculateProjections(MEAN_CONSERVATIVE, SD_CONSERVATIVE);
 
 		HelperUtil.print("\n*** Calculating Aggressive Profile ***     Mean={0} , Standard Deviation={1}", MEAN_AGGRESSIVE, SD_AGGRESSIVE);
@@ -41,7 +51,7 @@ public class Forecaster {
 
 	/**
 	 * Run iterations for projecting returns. Prints the output at end.
-	 * 
+	 *
 	 * @param mean
 	 * @param sd
 	 */
@@ -72,9 +82,11 @@ public class Forecaster {
 
 		System.out.println("\nAfter Adjusting Inflation\n");
 
-		HelperUtil.print("10% percentile={0}", HelperUtil.round(HelperUtil.adjustBackwardInflation(INFLATION_PERCENTAGE, NO_OF_YEARS, percentile10)));
+		HelperUtil.print("10% percentile={0}",
+				HelperUtil.round(HelperUtil.adjustBackwardInflation(INFLATION_PERCENTAGE, NO_OF_YEARS, percentile10)));
 		HelperUtil.print("Median={0}", HelperUtil.round(HelperUtil.adjustBackwardInflation(INFLATION_PERCENTAGE, NO_OF_YEARS, median)));
-		HelperUtil.print("90% percentile={0}", HelperUtil.round(HelperUtil.adjustBackwardInflation(INFLATION_PERCENTAGE, NO_OF_YEARS, percentile90)));
+		HelperUtil.print("90% percentile={0}",
+				HelperUtil.round(HelperUtil.adjustBackwardInflation(INFLATION_PERCENTAGE, NO_OF_YEARS, percentile90)));
 
 		long endTime = System.currentTimeMillis();
 		HelperUtil.print("Took {0} ms", endTime - startTime);
@@ -83,7 +95,7 @@ public class Forecaster {
 	/**
 	 * Project for {@link #NO_OF_YEARS} starting from the {@link #BASE_AMOUNT}. Adjusts mean every year by a random SD value and returns the
 	 * Expected Return at end of term.
-	 * 
+	 *
 	 * @param mean
 	 * @param sd
 	 * @return double
