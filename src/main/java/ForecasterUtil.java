@@ -20,6 +20,14 @@ public class ForecasterUtil {
 	// Aggressive Risk
 	private static final double SD_AGGRESSIVE = 15.675;
 
+	/**
+	 * Uses {@link #calculateProjections(double, double, double, int, double)}
+	 * 
+	 * @param inflationPercentage
+	 * @param noOfYears
+	 * @param baseAmount
+	 * @return ForecastHolder
+	 */
 	public static ForecastHolder calculateConservativeProjections(final double inflationPercentage, final int noOfYears, final double baseAmount) {
 
 		HelperUtil.print("*** Calculating Conservative Profile *** Mean={0} , Standard Deviation={1} , Inflation Percentage={2} , No Of Years={3} , Base Amount={4}", MEAN_CONSERVATIVE,
@@ -28,6 +36,14 @@ public class ForecasterUtil {
 		return forecastHolder;
 	}
 
+	/**
+	 * Uses {@link #calculateProjections(double, double, double, int, double)}
+	 * 
+	 * @param inflationPercentage
+	 * @param noOfYears
+	 * @param baseAmount
+	 * @return ForecastHolder
+	 */
 	public static ForecastHolder calculateAggressiveProjections(final double inflationPercentage, final int noOfYears, final double baseAmount) {
 
 		HelperUtil.print("\n*** Calculating Aggressive Profile *** Mean={0} , Standard Deviation={1} , Inflation Percentage={2} , No Of Years={3} , Base Amount={4}", MEAN_AGGRESSIVE, SD_AGGRESSIVE,
@@ -36,6 +52,16 @@ public class ForecasterUtil {
 		return forecastHolder;
 	}
 
+	/**
+	 * Uses {@link #calculateProjections(double, double, double, int, double)}
+	 * 
+	 * @param mean
+	 * @param sd
+	 * @param inflationPercentage
+	 * @param noOfYears
+	 * @param baseAmount
+	 * @return ForecastHolder
+	 */
 	public static ForecastHolder calculateCustomProjections(final double mean, final double sd, final double inflationPercentage, final int noOfYears, final double baseAmount) {
 
 		// HelperUtil.print("\n*** Calculating Custom Profile *** Mean={0} , Standard Deviation={1} , Inflation Percentage={2} , No Of

@@ -9,9 +9,9 @@ import main.java.ForecasterUtil;
 public class ForecasterUtilTest {
 
 	@Test
-	public void test() {
+	public void test1() {
 
-		// 7.4% annual return and 8.0% 127,300 ,,, 197,502
+		// 7.4% annual return and 8.0%
 		final double expectedPercentile10 = 127_300;
 		final double expectedMedian = 197_502;
 
@@ -24,6 +24,25 @@ public class ForecasterUtilTest {
 
 			double proximity_Median = (expectedMedian / forecastHolder.getMedian()) * 100;
 			Assert.assertTrue("Median proximity should be greater than 97% in relation to expected. Found=" + proximity_Median, proximity_Median >= 96);
+		}
+	}
+
+	@Test
+	public void test2() {
+
+		// 9.4% annual return and 15.6%
+		final double expectedPercentile10 = 106_041;
+		final double expectedMedian = 248_564;
+
+		final double mean = 9.4;
+		final double sd = 15.6;
+		for (int i = 0; i < 100; i++) {
+			ForecastHolder forecastHolder = ForecasterUtil.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
+			double proximity_Percentile10 = (expectedPercentile10 / forecastHolder.getPercentile10()) * 100;
+			Assert.assertTrue("Percentile10 proximity should be greater than 90% in relation to expected. Found=" + proximity_Percentile10, proximity_Percentile10 >= 80);
+
+			double proximity_Median = (expectedMedian / forecastHolder.getMedian()) * 100;
+			Assert.assertTrue("Median proximity should be greater than 97% in relation to expected. Found=" + proximity_Median, proximity_Median >= 92);
 		}
 	}
 
