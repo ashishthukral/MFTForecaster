@@ -17,6 +17,7 @@ public class ForecasterUtilTest {
 
 		final double mean = 7.4;
 		final double sd = 8.0;
+		// test 100 times
 		for (int i = 0; i < 100; i++) {
 			ForecastHolder forecastHolder = ForecasterUtil.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
 			double proximity_Percentile10 = (expectedPercentile10 / forecastHolder.getPercentile10()) * 100;
@@ -36,6 +37,7 @@ public class ForecasterUtilTest {
 
 		final double mean = 9.4;
 		final double sd = 15.6;
+		// test 100 times
 		for (int i = 0; i < 100; i++) {
 			ForecastHolder forecastHolder = ForecasterUtil.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
 			double proximity_Percentile10 = (expectedPercentile10 / forecastHolder.getPercentile10()) * 100;
