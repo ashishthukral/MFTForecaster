@@ -1,4 +1,8 @@
-package main.java;
+package com.pc;
+
+import com.pc.model.ForecastHolder;
+import com.pc.util.ForecasterUtil;
+import com.pc.util.HelperUtil;
 
 public class Analyzer {
 

@@ -1,8 +1,10 @@
-package main.java;
+package com.pc.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.pc.model.ForecastHolder;
 
 public class ForecasterUtil {
 

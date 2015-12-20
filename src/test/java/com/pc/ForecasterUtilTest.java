@@ -1,10 +1,10 @@
-package test.java;
+package com.pc;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import main.java.ForecastHolder;
-import main.java.ForecasterUtil;
+import com.pc.model.ForecastHolder;
+import com.pc.util.ForecasterUtil;
 
 public class ForecasterUtilTest {
 
