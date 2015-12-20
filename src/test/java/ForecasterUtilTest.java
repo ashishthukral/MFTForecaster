@@ -20,10 +20,10 @@ public class ForecasterUtilTest {
 		for (int i = 0; i < 100; i++) {
 			ForecastHolder forecastHolder = ForecasterUtil.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
 			double proximity_Percentile10 = (expectedPercentile10 / forecastHolder.getPercentile10()) * 100;
-			Assert.assertTrue("Percentile10 proximity should be greater than 90% in relation to expected. Found=" + proximity_Percentile10, proximity_Percentile10 >= 89);
+			Assert.assertTrue("Percentile10 proximity should be >= than 89% in relation to expected. Found=" + proximity_Percentile10, proximity_Percentile10 >= 89);
 
 			double proximity_Median = (expectedMedian / forecastHolder.getMedian()) * 100;
-			Assert.assertTrue("Median proximity should be greater than 97% in relation to expected. Found=" + proximity_Median, proximity_Median >= 96);
+			Assert.assertTrue("Median proximity should be >= than 96% in relation to expected. Found=" + proximity_Median, proximity_Median >= 96);
 		}
 	}
 
@@ -39,10 +39,10 @@ public class ForecasterUtilTest {
 		for (int i = 0; i < 100; i++) {
 			ForecastHolder forecastHolder = ForecasterUtil.calculateCustomProjections(mean, sd, 3.5, 20, 100_000);
 			double proximity_Percentile10 = (expectedPercentile10 / forecastHolder.getPercentile10()) * 100;
-			Assert.assertTrue("Percentile10 proximity should be greater than 90% in relation to expected. Found=" + proximity_Percentile10, proximity_Percentile10 >= 80);
+			Assert.assertTrue("Percentile10 proximity should be >= than 80% in relation to expected. Found=" + proximity_Percentile10, proximity_Percentile10 >= 80);
 
 			double proximity_Median = (expectedMedian / forecastHolder.getMedian()) * 100;
-			Assert.assertTrue("Median proximity should be greater than 97% in relation to expected. Found=" + proximity_Median, proximity_Median >= 92);
+			Assert.assertTrue("Median proximity should be >= than 92% in relation to expected. Found=" + proximity_Median, proximity_Median >= 92);
 		}
 	}
 
